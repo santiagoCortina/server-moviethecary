@@ -53,11 +53,13 @@ exports.signupProcess = (req, res, next) => {
               maxAge: 1000 * 60 * 24,
               httpOnly: true,
               sameSite: "none",
+              secure: true,
             });
 
             res.cookie("signature", signature, {
               httpOnly: true,
               sameSite: "none",
+              secure: true,
             });
 
             const newUser = cleanRes(user.toObject());
@@ -97,11 +99,13 @@ exports.loginProcess = async (req, res, next) => {
         maxAge: 1000 * 60 * 24,
         httpOnly: true,
         sameSite: "none",
+        secure: true,
       });
 
       res.cookie("signature", signature, {
         httpOnly: true,
         sameSite: "none",
+        secure: true,
       });
 
       const newUser = cleanRes(user.toObject());
