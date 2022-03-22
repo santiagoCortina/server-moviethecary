@@ -52,12 +52,12 @@ exports.signupProcess = (req, res, next) => {
             res.cookie("headload", `${header}.${payload}`, {
               maxAge: 1000 * 60 * 24,
               httpOnly: true,
-              sameSite: true,
+              sameSite: "none",
             });
 
             res.cookie("signature", signature, {
               httpOnly: true,
-              sameSite: true,
+              sameSite: "none",
             });
 
             const newUser = cleanRes(user.toObject());
@@ -96,12 +96,12 @@ exports.loginProcess = async (req, res, next) => {
       res.cookie("headload", `${header}.${payload}`, {
         maxAge: 1000 * 60 * 24,
         httpOnly: true,
-        sameSite: true,
+        sameSite: "none",
       });
 
       res.cookie("signature", signature, {
         httpOnly: true,
-        sameSite: true,
+        sameSite: "none",
       });
 
       const newUser = cleanRes(user.toObject());
