@@ -122,8 +122,16 @@ exports.loginProcess = async (req, res, next) => {
 };
 
 exports.logoutProcess = (req, res, next) => {
-  res.clearCookie("headload");
-  res.clearCookie("signature");
+  res.clearCookie("headload", {
+    httpOnly: true,
+    sameSite: "none",
+    secure: true,
+  });
+  res.clearCookie("signature", {
+    httpOnly: true,
+    sameSite: "none",
+    secure: true,
+  });
   res.status(200).json({ result: "Sesion cerrada exitosamente" });
 };
 
